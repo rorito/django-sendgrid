@@ -256,13 +256,13 @@ def batch_create_events(events):
     # check for newsletter events
     if sendgrid_settings.SENDGRID_CREATE_EVENTS_AND_EMAILS_FOR_NEWSLETTERS:
         newsletterEvents = [event for event in events if
-                            (not event.get("message_id", None)) and event.get("newsletter", None)]
+                            (not event.get("sg_message_id", None)) and event.get("newsletter", None)]
 
         newsletterEventsByNewsletter = seperate_events_by_newsletter_id(newsletterEvents)
         for newsletterId, events in newsletterEventsByNewsletter.items():
             batch_create_newsletter_events(newsletterId, events)
 
-    eventsWithMessageIds = [event for event in events if event.get("message_id", None)]
+    eventsWithMessageIds = [event for event in events if event.get("sg_message_id", None)]
     batch_create_events_with_message_ids(eventsWithMessageIds)
 
 
