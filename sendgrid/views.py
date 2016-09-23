@@ -152,10 +152,7 @@ def download_attachments(request, message_id):
 	import zipfile
 	from contextlib import closing
 	from django.shortcuts import get_object_or_404
-	try:
-		import json
-	except ImportError:
-		from django.utils import simplejson as json
+	import json
 
 	from sendgrid.utils import zip_files
 

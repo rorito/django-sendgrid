@@ -1,8 +1,5 @@
 from django.conf import settings
-try:
-	import json
-except ImportError:
-	from django.utils import simplejson as json
+import json
 
 from .utils import add_unsubscribes
 from .utils import delete_unsubscribes
